@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Histórico de Manutenção — Controle de Manutenção de Frota</title>
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+<div class="app-shell">
+  <header class="app-header">
+    <h1>Histórico de Manutenção</h1>
+  </header>
+  <div class="app-body">
+  <main class="app-main">
+    <div id="overdue-alert"></div>
+
+    <p class="hint">Para registrar uma nova manutenção, use "Nova manutenção" no menu Mais.</p>
+
+    <div class="section-title">Histórico</div>
+    <div class="filters">
+      <select id="filter-vehicle"><option value="">Veículo: Todos</option></select>
+      <select id="filter-tipo">
+        <option value="">Tipo: Todos</option>
+        <option value="preventiva">Revisão</option>
+        <option value="corretiva">Manutenção geral</option>
+      </select>
+      <select id="filter-status">
+        <option value="">Status: Todos</option>
+        <option value="em_dia">Em dia</option>
+        <option value="proximo">Próximo do prazo</option>
+        <option value="atrasado">Atrasado</option>
+      </select>
+    </div>
+    <div id="list-msg" class="info-msg" style="display:none"></div>
+    <div id="record-list"><p class="empty-state">Carregando...</p></div>
+  </main>
+    <nav class="primary-nav" id="app-nav"></nav>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/config.js"></script>
+<script src="assets/supabaseClient.js"></script>
+<script src="assets/utils.js"></script>
+<script src="assets/nav.js"></script>
+<script src="assets/maintenanceList.js"></script>
+<script src="assets/manutencoes.js"></script>
+</body>
+</html>

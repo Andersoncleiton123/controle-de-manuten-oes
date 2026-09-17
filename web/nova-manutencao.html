@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nova Manutenção — Controle de Manutenção de Frota</title>
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+<div class="app-shell">
+  <header class="app-header">
+    <h1>Nova Manutenção</h1>
+    <p class="subtitle">Registre uma revisão, manutenção geral ou troca de óleo</p>
+  </header>
+  <div class="app-body">
+  <main class="app-main">
+    <div class="card">
+      <div id="form-errors" class="error-list" style="display:none"></div>
+      <div id="form-info" class="info-msg" style="display:none"></div>
+      <form id="record-form">
+        <div class="field-row">
+          <div class="field">
+            <label for="f-vehicle">Veículo/equipamento *</label>
+            <select id="f-vehicle" required></select>
+          </div>
+          <div class="field">
+            <label for="f-tipo">Tipo de manutenção *</label>
+            <select id="f-tipo" required>
+              <option value="">Selecione...</option>
+              <option value="preventiva">Revisão</option>
+              <option value="corretiva">Manutenção geral</option>
+              <option value="oleo">Troca de óleo</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-data">Data *</label>
+            <input type="date" id="f-data" required />
+          </div>
+        </div>
+
+        <div id="fields-manutencao" hidden>
+          <div class="field-row">
+            <div class="field">
+              <label for="f-km-horas">Km ou horas de uso no momento *</label>
+              <input type="number" id="f-km-horas" min="0" step="0.01" />
+            </div>
+            <div class="field">
+              <label for="f-unidade">Unidade *</label>
+              <select id="f-unidade">
+                <option value="km">Km</option>
+                <option value="horas">Horas</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-custo">Custo (R$) *</label>
+              <input type="number" id="f-custo" min="0" step="0.01" />
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="f-responsavel">Responsável pela execução *</label>
+              <input type="text" id="f-responsavel" />
+            </div>
+            <div class="field">
+              <label for="f-proxima">Data prevista da próxima manutenção</label>
+              <input type="date" id="f-proxima" />
+            </div>
+            <div class="field">
+              <label for="f-horimetro-manutencao">Horímetro (opcional)</label>
+              <input type="number" id="f-horimetro-manutencao" min="0" step="0.01" />
+            </div>
+          </div>
+        </div>
+
+        <div id="fields-oleo" hidden>
+          <div class="field-row">
+            <div class="field">
+              <label for="f-local-troca">Local da troca *</label>
+              <input type="text" id="f-local-troca" />
+            </div>
+            <div class="field">
+              <label for="f-condutor">Condutor *</label>
+              <input type="text" id="f-condutor" />
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="f-km-atual">Km atual *</label>
+              <input type="number" id="f-km-atual" min="0" step="0.01" />
+            </div>
+            <div class="field">
+              <label for="f-horimetro">Horímetro atual</label>
+              <input type="number" id="f-horimetro" min="0" step="0.01" />
+            </div>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field" style="flex-basis:100%">
+            <label for="f-observacoes">Observações</label>
+            <textarea id="f-observacoes"></textarea>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </main>
+    <nav class="primary-nav" id="app-nav"></nav>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/config.js"></script>
+<script src="assets/supabaseClient.js"></script>
+<script src="assets/utils.js"></script>
+<script src="assets/nav.js"></script>
+<script src="assets/novaManutencao.js"></script>
+</body>
+</html>

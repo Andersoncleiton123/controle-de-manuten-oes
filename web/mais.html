@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mais — Controle de Manutenção de Frota</title>
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+<div class="app-shell">
+  <header class="app-header">
+    <h1>Mais</h1>
+  </header>
+  <div class="app-body">
+  <main class="app-main">
+    <a href="veiculos.html" class="card link-card">
+      <div class="entity-title-row">
+        <div class="entity-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="14" height="7" rx="2"/><path d="M17 11h3l1 3v2h-4"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="16" cy="17.5" r="1.6"/></svg>
+        </div>
+        <div>
+          <div class="entity-label">Cadastro</div>
+          <div class="entity-name">Veículos / Equipamentos</div>
+        </div>
+      </div>
+      <span class="chevron">›</span>
+    </a>
+
+    <a href="oleo.html" class="card link-card">
+      <div class="entity-title-row">
+        <div class="entity-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3 3.5 5 6.2 5 9a5 5 0 0 1-10 0c0-2.8 2-5.5 5-9z"/></svg>
+        </div>
+        <div>
+          <div class="entity-label">Registro</div>
+          <div class="entity-name">Troca de Óleo</div>
+        </div>
+      </div>
+      <span class="chevron">›</span>
+    </a>
+
+    <a href="alertas.html" class="card link-card">
+      <div class="entity-title-row">
+        <div class="entity-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4"/><circle cx="12" cy="17" r="0.8" fill="currentColor" stroke="none"/></svg>
+        </div>
+        <div>
+          <div class="entity-label">Acompanhamento</div>
+          <div class="entity-name">Alertas</div>
+        </div>
+      </div>
+      <span class="chevron">›</span>
+    </a>
+  </main>
+    <nav class="primary-nav" id="app-nav"></nav>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/config.js"></script>
+<script src="assets/supabaseClient.js"></script>
+<script src="assets/utils.js"></script>
+<script src="assets/nav.js"></script>
+</body>
+</html>

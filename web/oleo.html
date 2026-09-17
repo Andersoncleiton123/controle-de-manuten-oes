@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Troca de Óleo — Controle de Manutenção de Frota</title>
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+<div class="app-shell">
+  <header class="app-header">
+    <h1>Troca de Óleo</h1>
+    <p class="subtitle">Revisão a cada 600h, 10.000 km ou 6 meses — o que ocorrer primeiro</p>
+  </header>
+  <div class="app-body">
+  <main class="app-main">
+    <div class="card">
+      <h3 id="form-title">Nova troca de óleo</h3>
+      <div id="form-errors" class="error-list" style="display:none"></div>
+      <form id="record-form">
+        <input type="hidden" id="record-id" />
+        <div class="field-row">
+          <div class="field">
+            <label for="f-vehicle">Veículo/equipamento *</label>
+            <select id="f-vehicle" required></select>
+          </div>
+          <div class="field">
+            <label for="f-local">Local da troca *</label>
+            <input type="text" id="f-local" required />
+          </div>
+          <div class="field">
+            <label for="f-condutor">Condutor *</label>
+            <input type="text" id="f-condutor" required />
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="f-km">Km atual *</label>
+            <input type="number" id="f-km" min="0" step="0.01" required />
+          </div>
+          <div class="field">
+            <label for="f-horimetro">Horímetro atual</label>
+            <input type="number" id="f-horimetro" min="0" step="0.01" />
+          </div>
+          <div class="field">
+            <label for="f-data">Data da última troca *</label>
+            <input type="date" id="f-data" required />
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit">Salvar</button>
+          <button type="button" class="secondary" id="cancel-edit" style="display:none">Cancelar edição</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="section-title">Histórico de trocas de óleo</div>
+    <div class="filters">
+      <select id="filter-vehicle"><option value="">Veículo: Todos</option></select>
+      <select id="filter-status">
+        <option value="">Status: Todos</option>
+        <option value="em_dia">Em dia</option>
+        <option value="proximo">Próximo do prazo</option>
+        <option value="atrasado">Atrasado</option>
+      </select>
+    </div>
+    <div id="list-msg" class="info-msg" style="display:none"></div>
+    <div id="record-list"><p class="empty-state">Carregando...</p></div>
+  </main>
+    <nav class="primary-nav" id="app-nav"></nav>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/config.js"></script>
+<script src="assets/supabaseClient.js"></script>
+<script src="assets/utils.js"></script>
+<script src="assets/nav.js"></script>
+<script src="assets/oleo.js"></script>
+</body>
+</html>

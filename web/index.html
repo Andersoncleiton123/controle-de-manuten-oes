@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Início — Controle de Manutenção de Frota</title>
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+<div class="app-shell">
+  <header class="app-header">
+    <h1>Início</h1>
+    <p class="subtitle">Controle de Manutenção de Frota</p>
+  </header>
+  <div class="app-body">
+  <main class="app-main">
+    <div id="info-msg" class="info-msg" style="display:none"></div>
+
+    <a href="betoneiras-manutencoes.html" class="card link-card">
+      <div class="entity-title-row">
+        <div class="entity-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="13" width="14" height="6" rx="2"/><circle cx="15" cy="9" r="5"/></svg>
+        </div>
+        <div>
+          <div class="entity-label">Histórico</div>
+          <div class="entity-name">Manutenções de Betoneiras</div>
+        </div>
+      </div>
+      <span class="chevron">›</span>
+    </a>
+
+    <div class="section-title">Veículos</div>
+    <div id="vehicle-list">
+      <p class="empty-state">Carregando...</p>
+    </div>
+  </main>
+    <nav class="primary-nav" id="app-nav"></nav>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/config.js"></script>
+<script src="assets/supabaseClient.js"></script>
+<script src="assets/utils.js"></script>
+<script src="assets/nav.js"></script>
+<script src="assets/dashboard.js"></script>
+</body>
+</html>

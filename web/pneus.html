@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Controle de Troca de Pneu — Controle de Manutenção de Frota</title>
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+<div class="app-shell">
+  <header class="app-header">
+    <h1>Controle de Troca de Pneu</h1>
+  </header>
+  <div class="app-body">
+  <main class="app-main">
+    <div class="card">
+      <h3 id="form-title">Nova troca de pneu</h3>
+      <p class="hint">Registre uma troca por posição. É possível registrar todas as posições do mesmo veículo, uma por vez.</p>
+      <div id="form-errors" class="error-list" style="display:none"></div>
+      <div class="form-tabs" id="form-tabs">
+        <button type="button" class="form-tab active" data-tab="principal">Principal</button>
+        <button type="button" class="form-tab" data-tab="outras">Outras informações</button>
+      </div>
+      <form id="record-form">
+        <input type="hidden" id="record-id" />
+        <div class="tab-panel" data-tab-panel="principal">
+          <div class="field-row">
+            <div class="field">
+              <label for="f-vehicle">Veículo *</label>
+              <select id="f-vehicle" required></select>
+            </div>
+            <div class="field">
+              <label for="f-posicao">Posição do pneu *</label>
+              <select id="f-posicao" required>
+                <option value="">Selecione...</option>
+                <optgroup label="Dianteiro">
+                  <option value="dianteiro_esquerdo">Esquerdo</option>
+                  <option value="dianteiro_direito">Direito</option>
+                </optgroup>
+                <optgroup label="Traseiro — eixo único">
+                  <option value="traseiro_esquerdo">Esquerdo</option>
+                  <option value="traseiro_direito">Direito</option>
+                </optgroup>
+                <optgroup label="Traseiro — 1º eixo">
+                  <option value="traseiro_eixo1_esquerdo_externo">Esquerdo externo</option>
+                  <option value="traseiro_eixo1_esquerdo_interno">Esquerdo interno</option>
+                  <option value="traseiro_eixo1_direito_interno">Direito interno</option>
+                  <option value="traseiro_eixo1_direito_externo">Direito externo</option>
+                </optgroup>
+                <optgroup label="Traseiro — 2º eixo">
+                  <option value="traseiro_eixo2_esquerdo_externo">Esquerdo externo</option>
+                  <option value="traseiro_eixo2_esquerdo_interno">Esquerdo interno</option>
+                  <option value="traseiro_eixo2_direito_interno">Direito interno</option>
+                  <option value="traseiro_eixo2_direito_externo">Direito externo</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-fabricante">Fabricante *</label>
+              <input type="text" id="f-fabricante" required />
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="f-data">Data da troca *</label>
+              <input type="date" id="f-data" required />
+            </div>
+            <div class="field">
+              <label for="f-km">Km na troca *</label>
+              <input type="number" id="f-km" min="0" step="0.01" required />
+            </div>
+            <div class="field">
+              <label for="f-local-aquisicao">Local de aquisição *</label>
+              <input type="text" id="f-local-aquisicao" required />
+            </div>
+          </div>
+        </div>
+        <div class="tab-panel" data-tab-panel="outras" hidden>
+          <div class="field">
+            <label for="f-observacoes">Observações</label>
+            <textarea id="f-observacoes" placeholder="Qualquer detalhe relevante sobre esta troca..."></textarea>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit">Salvar</button>
+          <button type="button" class="secondary" id="cancel-edit" style="display:none">Cancelar edição</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="section-title">Histórico de trocas de pneu</div>
+    <div class="filters">
+      <select id="filter-vehicle"><option value="">Veículo: Todos</option></select>
+      <select id="filter-posicao">
+        <option value="">Posição: Todas</option>
+        <option value="dianteiro_esquerdo">Dianteiro esquerdo</option>
+        <option value="dianteiro_direito">Dianteiro direito</option>
+        <option value="traseiro_esquerdo">Traseiro esquerdo (eixo único)</option>
+        <option value="traseiro_direito">Traseiro direito (eixo único)</option>
+        <option value="traseiro_eixo1_esquerdo_externo">Traseiro 1º eixo — esquerdo externo</option>
+        <option value="traseiro_eixo1_esquerdo_interno">Traseiro 1º eixo — esquerdo interno</option>
+        <option value="traseiro_eixo1_direito_interno">Traseiro 1º eixo — direito interno</option>
+        <option value="traseiro_eixo1_direito_externo">Traseiro 1º eixo — direito externo</option>
+        <option value="traseiro_eixo2_esquerdo_externo">Traseiro 2º eixo — esquerdo externo</option>
+        <option value="traseiro_eixo2_esquerdo_interno">Traseiro 2º eixo — esquerdo interno</option>
+        <option value="traseiro_eixo2_direito_interno">Traseiro 2º eixo — direito interno</option>
+        <option value="traseiro_eixo2_direito_externo">Traseiro 2º eixo — direito externo</option>
+      </select>
+      <select id="filter-status">
+        <option value="">Status: Todos</option>
+        <option value="em_dia">Em dia</option>
+        <option value="proximo">Próximo do prazo</option>
+        <option value="atrasado">Atrasado</option>
+      </select>
+    </div>
+    <div id="list-msg" class="info-msg" style="display:none"></div>
+    <div id="record-list"><p class="empty-state">Carregando...</p></div>
+
+    <div class="card">
+      <div class="legend">
+        <div class="legend-item"><span class="status-dot em_dia"></span>Em dia</div>
+        <div class="legend-item"><span class="status-dot proximo"></span>Próximo do prazo</div>
+        <div class="legend-item"><span class="status-dot atrasado"></span>Atrasado</div>
+      </div>
+    </div>
+  </main>
+    <nav class="primary-nav" id="app-nav"></nav>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/config.js"></script>
+<script src="assets/supabaseClient.js"></script>
+<script src="assets/utils.js"></script>
+<script src="assets/nav.js"></script>
+<script src="assets/pneus.js"></script>
+</body>
+</html>

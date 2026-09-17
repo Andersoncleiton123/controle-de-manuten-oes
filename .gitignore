@@ -1,0 +1,9 @@
+# Credenciais reais do Supabase — preencha a partir das instruções do README
+web/assets/config.js
+
+# Configuração local de dev server (gerada por sessões do Claude Code)
+.claude/
+
+# Arquivos de SO/editor
+.DS_Store
+Thumbs.db

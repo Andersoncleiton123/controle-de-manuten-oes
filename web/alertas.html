@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Alertas — Controle de Manutenção de Frota</title>
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+<div class="app-shell">
+  <header class="app-header">
+    <h1>Alertas</h1>
+    <p class="subtitle">Manutenções próximas do prazo ou atrasadas, por urgência</p>
+  </header>
+  <div class="app-body">
+  <main class="app-main">
+    <div class="filters">
+      <select id="filter-origem">
+        <option value="">Tipo: Todos</option>
+        <option value="geral">Manutenção geral</option>
+        <option value="oleo">Troca de óleo</option>
+        <option value="pneu">Troca de pneu</option>
+        <option value="lubrificante">Lubrificante</option>
+      </select>
+      <select id="filter-status">
+        <option value="">Próximo e atrasado</option>
+        <option value="atrasado">Somente atrasado</option>
+        <option value="proximo">Somente próximo do prazo</option>
+      </select>
+    </div>
+    <div id="list-msg" class="info-msg" style="display:none"></div>
+    <div id="alerts-body"><p class="empty-state">Carregando...</p></div>
+  </main>
+    <nav class="primary-nav" id="app-nav"></nav>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/config.js"></script>
+<script src="assets/supabaseClient.js"></script>
+<script src="assets/utils.js"></script>
+<script src="assets/nav.js"></script>
+<script src="assets/alertas.js"></script>
+</body>
+</html>
