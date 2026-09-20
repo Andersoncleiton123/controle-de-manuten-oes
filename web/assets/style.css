@@ -41,7 +41,7 @@ body {
 }
 
 .app-header {
-  background: var(--color-primary);
+  background: var(--color-danger);
   color: #fff;
   padding: 20px 24px;
   flex-shrink: 0;
